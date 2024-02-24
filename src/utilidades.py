@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def tallo_y_hoja(G):
+def vecindad(G):
     '''funcion para simular salida igraph'''
     for node in G.nodes():
         vecinos = list(G.neighbors(node))
@@ -55,4 +55,9 @@ def reconstruir_matriz_aristas_nodos(matriz_adyacencia):
     matriz_aristas = [(i,j) for i in range(matriz_adyacencia.shape[0]) for j in range(i+1,matriz_adyacencia.shape[0]) if matriz_adyacencia[i,j] == 1]
     # retornamos la matriz
     return matriz_aristas, vertices
+
+def es_isomorfo(G, graphs):
+    '''funcion para determinar si un grafo G es isomorfo a alguno de los grafos de la lista graphs'''
+    # retornamos True si G es isomorfo a alguno de los grafos de la lista graphs
+    return any(nx.is_isomorphic(G, graph) for graph in graphs)
 
