@@ -61,3 +61,7 @@ def es_isomorfo(G, graphs):
     # retornamos True si G es isomorfo a alguno de los grafos de la lista graphs
     return any(nx.is_isomorphic(G, graph) for graph in graphs)
 
+
+def creacion_de_grafos_aleatorios(direccionada=False, prob=0.5, orden=5):
+    '''funcion para crear grafos aleatorios'''
+
