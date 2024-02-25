@@ -62,6 +62,17 @@ def es_isomorfo(G, graphs):
     return any(nx.is_isomorphic(G, graph) for graph in graphs)
 
 
-def creacion_de_grafos_aleatorios(direccionada=False, prob=0.5, orden=5):
+def creacion_de_grafos_aleatorios(direccionada=False, prob=0.5, orden=5, semilla=123):
     '''funcion para crear grafos aleatorios'''
-
+    # verificamos si el grafo es direccionado
+    np.random.seed(semilla)
+    if direccionada:
+        G = nx.DiGraph()
+        matriz_aristas = [(i,j) for i in range(orden) for j in range(orden) if np.random.rand() < prob and i!=j]
+        G.add_edges_from(matriz_aristas)    
+    else:
+        G = nx.gnp_random_graph(orden, prob, directed=False)
+        matriz_aristas = [(i,j) for i in range(orden) for j in range(i+1,orden) if np.random.rand() < prob]
+        G.add_edges_from(matriz_aristas)
+    
+  
