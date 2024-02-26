@@ -68,11 +68,25 @@ def creacion_de_grafos_aleatorios(direccionada=False, prob=0.5, orden=5, semilla
     np.random.seed(semilla)
     if direccionada:
         G = nx.DiGraph()
+        G.add_nodes_from(list(range(orden)))
         matriz_aristas = [(i,j) for i in range(orden) for j in range(orden) if np.random.rand() < prob and i!=j]
         G.add_edges_from(matriz_aristas)    
     else:
-        G = nx.gnp_random_graph(orden, prob, directed=False)
+        G = nx.Graph()
+        G.add_nodes_from(list(range(orden)))
         matriz_aristas = [(i,j) for i in range(orden) for j in range(i+1,orden) if np.random.rand() < prob]
         G.add_edges_from(matriz_aristas)
-    
+
+    vector = np.zeros(orden**2)
+
+    for arista in matriz_aristas:
+        indice = arista[0] * orden + arista[1]
+        vector[indice] = 1
+
+    nx.draw(G, with_labels=True, node_color='lightblue', node_size=500, font_size=10)
+    plt.title('Visualización del Grafo')
+    plt.show()
+    print(f'Vector de la matriz es: {vector}')
+    return vector
+
   
