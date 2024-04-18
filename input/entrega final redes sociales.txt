@@ -1,0 +1,24 @@
+1. Introduccion 
+1.1 descipcion del caso, el numero de videos, palabras luedo de la limpieza 
+1.2 objetivos
+2 tokenizacion 
+2.1 descarga importacion del texto # 
+2.2 normalizacion de los datos # 
+2.3 Frecuencias de los datos (tablas, wordclod) # 
+2.4 similaridad entre casos (correlacion y palabras usadas en ambos casos)
+3 Analisis de sentiemientos
+3.1 positividad y negatividad de las palabras 
+3.2 serie de tiempo de negativivdad 
+3.3 wordcloud separada por sentimiento
+4 bigramas #
+4.1 frecuencias #
+4.2 grafo por umbral #
+4.3 estadisticas por grafo 
+4.5 comoponentes conexas 
+4.6 skipgramas# 
+4.7 componentes conexas
+5 comparacion mediante estadisticos de las redes
+5.1 palabras importantes 
+5.2 agrupamientos 
+5.3 top grupo mayor
+
