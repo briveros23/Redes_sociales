@@ -5,7 +5,7 @@
 2.1 descarga importacion del texto # 
 2.2 normalizacion de los datos # 
 2.3 Frecuencias de los datos (tablas, wordclod) # 
-2.4 similaridad entre casos (correlacion y palabras usadas en ambos casos)
+2.4 similaridad entre casos (correlacion y palabras usadas en ambos casos)#
 3 Analisis de sentiemientos
 3.1 positividad y negatividad de las palabras 
 3.2 serie de tiempo de negativivdad 
