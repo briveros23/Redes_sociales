@@ -1,7 +1,7 @@
 1. Introduccion 
 1.1 descipcion del caso, el numero de videos, palabras luedo de la limpieza 
 1.2 objetivos
-2 tokenizacion 
+2 tokenizacion##########################
 2.1 descarga importacion del texto # 
 2.2 normalizacion de los datos # 
 2.3 Frecuencias de los datos (tablas, wordclod) # 
