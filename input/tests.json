@@ -1,0 +1,12 @@
+{
+    "nodes": [
+        {"id": 0, "label": "A", "type": "part1"},
+        {"id": 1, "label": "B", "type": "part2"},
+        {"id": 2, "label": "C", "type": "part1"},
+        {"id": 3, "label": "D", "type": "part2"}
+    ],
+    "edges": [
+        {"source": 0, "target": 1, "weight": 1.5, "relation": "friend"},
+        {"source": 2, "target": 3, "weight": 2.5, "relation": "colleague"}
+    ]
+}
