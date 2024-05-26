@@ -22,3 +22,29 @@ def grafo_matriz_adyacencia_t5(matriz_adyacencia, nombres_nodos):
     G.es['weight'] = matriz_adyacencia[matriz_adyacencia.nonzero()]
     G.vs['label'] = nombres_nodos
     return G
+
+# funcion para obtener estadisticas descriptivas de un grafo
+
+def estadisticas_descriptivas_t5(G):
+    return {
+        # caratizar vertices del grafo
+        # diametro del grafo
+        'diametro': G.diameter(),
+        # nodo de mayor grado
+        'nodo_mayor_grado': G.vs.select(_degree = G.maxdegree())['label'],
+        # nodo con mayo centralidad closeness
+        'nodo_centralidad_closeness': G.vs.select(closeness = G.closeness())[0]['label'],
+        # nodo con mayor centralidad betweenness
+        'nodo_centralidad_betweenness': G.vs.select(betweenness = G.betweenness())[0]['label'],
+        # nodo con mayor centralidad propia
+        'nodo_centralidad_eigen': G.vs.select(_eigen = G.eigenvector_centrality())[0]['label'],
+        #caracterizar conectividad del grafo
+        # grado promedio
+        'grado_promedio': sum(G.degree())/len(G.degree()),
+        # clan mas grande
+        'clan_mas_grande': G.clusters().giant().vcount(),
+        # densidad de la red
+        'densidad_red': G.density(),
+        # transitividad global de la red 
+        'transitividad_global': G.transitivity_undirected(),
+    }
