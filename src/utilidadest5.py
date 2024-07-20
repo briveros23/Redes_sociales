@@ -26,25 +26,28 @@ def grafo_matriz_adyacencia_t5(matriz_adyacencia, nombres_nodos):
 # funcion para obtener estadisticas descriptivas de un grafo
 
 def estadisticas_descriptivas_t5(G):
-    return {
-        # caratizar vertices del grafo
-        # diametro del grafo
-        'diametro': G.diameter(),
-        # nodo de mayor grado
-        'nodo_mayor_grado': G.vs.select(_degree = G.maxdegree())['label'],
-        # nodo con mayo centralidad closeness
-        'nodo_centralidad_closeness': G.vs.select(closeness = G.closeness())[0]['label'],
-        # nodo con mayor centralidad betweenness
-        'nodo_centralidad_betweenness': G.vs.select(betweenness = G.betweenness())[0]['label'],
-        # nodo con mayor centralidad propia
-        'nodo_centralidad_eigen': G.vs.select(_eigen = G.eigenvector_centrality())[0]['label'],
-        #caracterizar conectividad del grafo
-        # grado promedio
-        'grado_promedio': sum(G.degree())/len(G.degree()),
-        # clan mas grande
-        'clan_mas_grande': G.clusters().giant().vcount(),
-        # densidad de la red
-        'densidad_red': G.density(),
-        # transitividad global de la red 
-        'transitividad_global': G.transitivity_undirected(),
-    }
+    # diametro del grafo
+    diametro = G.diameter()
+    # nodo de mayor grado
+    nodo_mayor_grado = G.vs.select(_degree = G.maxdegree())['label']
+    mayor_grado = G.maxdegree()
+    # nodo con mayor centralidad betweenness
+    centralidad_intermediacion = G.betweenness()
+    nodo_max_intermediacion = G.vs[centralidad_intermediacion.index(max(centralidad_intermediacion))]["label"]
+    # nodo con mayor closeness
+    centralidad_cercania = G.closeness()
+    nodo_max_cercania = G.vs[centralidad_cercania.index(max(centralidad_cercania))]["label"]
+    # nodo con mayor centralidad propia
+    centralidad_eigen = G.eigenvector_centrality()
+    nodo_max_eigen = G.vs[centralidad_eigen.index(max(centralidad_eigen))]["label"]
+    # grado promedio
+    grado_promedio = sum(G.degree())/len(G.degree())
+    # clan mas grande
+    clanes = G.largest_cliques()
+    clan_mas_grande = max(clanes, key=len)
+    clan_mas_grande = len(clan_mas_grande)
+    # densidad de la red
+    densidad_red = G.density()
+    # transitividad global de la red
+    transitividad_global = G.transitivity_undirected()
+    return {"diametro": diametro, "nodo_mayor_grado": nodo_mayor_grado, "mayor_grado": mayor_grado, "nodo_max_intermediacion": nodo_max_intermediacion, "nodo_max_cercania": nodo_max_cercania, "nodo_max_eigen": nodo_max_eigen, "grado_promedio": grado_promedio, "clan_mas_grande": clan_mas_grande, "densidad_red": densidad_red, "transitividad_global": transitividad_global}
